@@ -1,15 +1,13 @@
-import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import '@/app/globals.css'
 
-import './globals.css'
+import type { Metadata } from 'next'
+import { Geist } from 'next/font/google'
+import { ThemeProvider } from 'next-themes'
+
+import { cn } from '@/lib/utils'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
-  subsets: ['latin'],
-})
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
   subsets: ['latin'],
 })
 
@@ -25,8 +23,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {children}
+      <body
+        className={cn(
+          'bg-background font-sans text-foreground antialiased',
+          geistSans.variable,
+        )}
+      >
+        <ThemeProvider attribute="class" disableTransitionOnChange>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )
