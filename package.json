@@ -12,6 +12,7 @@
     "dev": "next dev",
     "format": "prettier --check . --cache --cache-location ./.next/cache/prettier/.prettier-cache",
     "format:fix": "bun format --write",
+    "postinstall": "bun db:generate",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "preview": "next build && next start",
