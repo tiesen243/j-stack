@@ -75,11 +75,11 @@ export const createJstackRouter = j.router
  * network latency that would occur in production but not in local development.
  */
 const timingMiddleware = j.middleware(async ({ c, next }) => {
-  const start = Date.now()
+  const start = performance.now()
   const result = await next()
-  const end = Date.now()
+  const end = performance.now()
 
-  console.log(`[JStack] ${c.req.path} took ${end - start}ms to execute`)
+  console.log(`[JStack] ${c.req.path} took ${(end - start).toFixed(4)}ms to execute`)
 
   return result
 })
