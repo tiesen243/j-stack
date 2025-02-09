@@ -100,12 +100,12 @@ export const publicProcedure = j.procedure.use(createJstackContext).use(timingMi
  *
  * @see https://jstack.app/docs/backend/procedures
  */
-export const privateProceure = j.procedure
+export const protectedProceure = j.procedure
   .use(createJstackContext)
   .use(timingMiddleware)
   .use(
     j.middleware(async ({ ctx, next }) => {
-      if (ctx.session.user)
+      if (!ctx.session.user)
         throw new HTTPException(401, {
           message: 'Unauthorized',
         })
