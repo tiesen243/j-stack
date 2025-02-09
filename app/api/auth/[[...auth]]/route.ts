@@ -5,8 +5,7 @@ import { Discord, generateState, OAuth2RequestError } from 'arctic'
 
 import { env } from '@/env'
 import { getBaseUrl } from '@/lib/utils'
-import { validateSessionToken } from '@/server/auth'
-import { createSession } from '@/server/auth/session'
+import { createSession, validateSessionToken } from '@/server/auth/session'
 import { db } from '@/server/db'
 
 type ReqType = 'getSession' | 'discord'
