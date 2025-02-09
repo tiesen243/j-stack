@@ -6,7 +6,7 @@
   "scripts": {
     "build": "next build",
     "check": "bun lint && bun format && bun typecheck",
-    "db:generate": "prisma db generate",
+    "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
     "dev": "next dev",
