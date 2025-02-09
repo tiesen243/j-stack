@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { Geist } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
 
+import { ReactQueryProvider } from '@/lib/api/client'
 import { cn } from '@/lib/utils'
 
 const geistSans = Geist({
@@ -22,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
           'bg-background text-foreground font-sans antialiased',
@@ -30,7 +31,7 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider attribute="class" disableTransitionOnChange>
-          {children}
+          <ReactQueryProvider>{children}</ReactQueryProvider>
         </ThemeProvider>
       </body>
     </html>
