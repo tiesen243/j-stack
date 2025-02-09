@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          'bg-background font-sans text-foreground antialiased',
+          'bg-background text-foreground font-sans antialiased',
           geistSans.variable,
         )}
       >
