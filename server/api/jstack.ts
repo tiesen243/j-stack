@@ -10,8 +10,9 @@
 import { HTTPException } from 'hono/http-exception'
 import { jstack } from 'jstack'
 
-import type { Session } from '../auth/session'
-import { auth, validateSessionToken } from '@/server/auth'
+import type { Session } from '@/server/auth/session'
+import { auth } from '@/server/auth'
+import { validateSessionToken } from '@/server/auth/session'
 import { db } from '@/server/db'
 
 /**

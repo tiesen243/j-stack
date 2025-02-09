@@ -1,7 +1,9 @@
+'use server'
+
 import { cache } from 'react'
 import { cookies } from 'next/headers'
 
-import { validateSessionToken } from '@/server/auth/session'
+import { invalidateSessionToken, validateSessionToken } from '@/server/auth/session'
 
 export const auth = cache(async () => {
   const authToken = (await cookies()).get('auth_token')?.value ?? ''
@@ -9,4 +11,8 @@ export const auth = cache(async () => {
   return validateSessionToken(authToken)
 })
 
-export { validateSessionToken, invalidateSessionToken } from '@/server/auth/session'
+export const signOut = async () => {
+  const authToken = (await cookies()).get('auth_token')?.value ?? ''
+  if (!authToken) return
+  return invalidateSessionToken(authToken)
+}

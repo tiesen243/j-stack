@@ -58,9 +58,7 @@ const validateSessionToken = async (token: string): Promise<Session> => {
 }
 
 const invalidateSessionToken = async (token: string): Promise<void> => {
-  const sessionToken = encodeHexLowerCase(
-    sha256(new TextEncoder().encode(token.slice('Bearer '.length))),
-  )
+  const sessionToken = encodeHexLowerCase(sha256(new TextEncoder().encode(token)))
   await db.session.delete({ where: { sessionToken } })
 }
 
